@@ -7,10 +7,10 @@ Ball :: Ball(){
     x = GetScreenWidth() / 2;
     y = GetScreenHeight() / 2;
 
-    speedX = 3.5;
-    speedY = 3.5;
+    speedX = 4.5;
+    speedY = 4.5;
 
-    radius = 20;
+    radius = 15;
 }
 
 Ball :: Ball( int X, int Y){
@@ -21,6 +21,7 @@ Ball :: Ball( int X, int Y){
     y = Y;
 
 }
+
 
 void Ball :: Draw(){
 
@@ -39,6 +40,11 @@ void Ball :: ballUpdate(){
     y += speedY;
 }
 
+void Ball :: reboundLines(){
+
+    speedX = -speedX;
+    speedY = -speedY;
+}
 
 bool Ball :: CollisionScreenX(){
 

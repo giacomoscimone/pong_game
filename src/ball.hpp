@@ -10,10 +10,14 @@ class Ball{
         void Draw();
         void ballUpdate();
 
-    private:
+        void reboundLines();
+
         int x;
         int y;
         int radius;
+
+    private:
+        
         
         double speedX;
         double speedY;    
