@@ -1,4 +1,5 @@
 #include "raylib.h"
+#include "game.hpp"
 
 
 int main(){
@@ -9,12 +10,15 @@ int main(){
 
     Color colorBackground = BLACK;
 
+    Game game;
+
     while( !WindowShouldClose()){
         
+        game.Update();
         ClearBackground( colorBackground );
         BeginDrawing();
         
-        
+        game.Draw();
 
         EndDrawing();
     }
