@@ -1,5 +1,6 @@
 #include "ball.hpp"
 #include "raylib.h"
+#include <random>
 
 
 Ball :: Ball(){
@@ -7,10 +8,10 @@ Ball :: Ball(){
     x = GetScreenWidth() / 2;
     y = GetScreenHeight() / 2;
 
-    speedX = 4.5;
-    speedY = 4.5;
+    speedX = 8;
+    speedY = 8;
 
-    radius = 15;
+    radius = 13;
 }
 
 Ball :: Ball( int X, int Y){
@@ -43,7 +44,10 @@ void Ball :: ballUpdate(){
 void Ball :: reboundLines(){
 
     speedX = -speedX;
-    speedY = -speedY;
+    if(rand()%2)
+        speedY = -speedY;
+
+    y += rand()%8 -4;
 }
 
 bool Ball :: CollisionScreenX(){

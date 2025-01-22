@@ -13,6 +13,8 @@ int main(){
     Game game;
 
     while( !WindowShouldClose()){
+
+        game.HandleInput();
         
         game.Update();
         ClearBackground( colorBackground );

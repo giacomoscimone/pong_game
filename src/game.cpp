@@ -18,6 +18,7 @@ void Game::Draw(){
 
 void Game :: Update(){
 
+
     pl1.RecUpdate();
     pl2.RecUpdate();
 
@@ -26,4 +27,18 @@ void Game :: Update(){
         ball.reboundLines();
 
     ball.ballUpdate();
+}
+
+void Game :: HandleInput(){
+
+
+    if(IsKeyDown(KEY_W))
+        pl1.MoveUp();
+    else if(IsKeyDown(KEY_S))
+        pl1.MoveDown();
+    if(IsKeyDown(KEY_UP))
+        pl2.MoveUp();
+    else if(IsKeyDown(KEY_DOWN))
+        pl2.MoveDown();
+    
 }

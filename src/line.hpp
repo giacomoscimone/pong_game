@@ -13,6 +13,9 @@ class Line{
 
         Rectangle rec;
 
+        void MoveUp();
+        void MoveDown();
+
     private:
 
         int x;
@@ -20,5 +23,5 @@ class Line{
 
         const int WIDTH = 25, HEIGHT = 130;
         
-
+        int speedY;
 };
