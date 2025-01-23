@@ -12,16 +12,22 @@ class Ball{
 
         void reboundLines();
 
+        
+        bool PointScoredPL1();
+        bool PointScoredPL2();
+
         int x;
         int y;
         int radius;
+
+        void Stop();
+        void Start();
 
     private:
         
         
         double speedX;
         double speedY;    
-
-        bool CollisionScreenX();
+        
         bool CollisionScreenY();
 };

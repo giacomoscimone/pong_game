@@ -1,7 +1,10 @@
 #include "line.hpp"
 #include "raylib.h"
 
+
 Line :: Line(bool numberPlayer){
+
+    Start();
 
     if(numberPlayer)
         x = 120;
@@ -12,7 +15,6 @@ Line :: Line(bool numberPlayer){
 
     y = GetScreenHeight() / 2;
 
-    speedY = 7.5;
 }
 
 void Line :: RecUpdate(){
@@ -40,4 +42,14 @@ void Line :: MoveDown(){
 
     if( y + HEIGHT <= GetScreenHeight() )
         y += speedY;
+}
+
+void Line :: Stop(){
+
+    speedY = 0;
+}
+
+void Line :: Start(){
+
+    speedY = 7.5;
 }

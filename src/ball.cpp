@@ -8,8 +8,7 @@ Ball :: Ball(){
     x = GetScreenWidth() / 2;
     y = GetScreenHeight() / 2;
 
-    speedX = 8;
-    speedY = 8;
+    Start();
 
     radius = 13;
 }
@@ -31,9 +30,6 @@ void Ball :: Draw(){
 
 void Ball :: ballUpdate(){
 
-    if(CollisionScreenX())
-        speedX = -speedX;
-    
     if(CollisionScreenY())
         speedY = -speedY;
 
@@ -50,14 +46,30 @@ void Ball :: reboundLines(){
     y += rand()%8 -4;
 }
 
-bool Ball :: CollisionScreenX(){
-
-
-    return (x + radius >= GetScreenWidth() && speedX > 0) || (x - radius <= 0 && speedX < 0);
-}
-
 bool Ball :: CollisionScreenY(){
 
 
     return (y + radius >= GetScreenHeight() && speedY > 0) || (y - radius <= 0 && speedY < 0);
+}
+
+bool Ball :: PointScoredPL1(){
+
+    return (x + radius >= GetScreenWidth() && speedX > 0);
+}
+
+bool Ball :: PointScoredPL2(){
+    return (x - radius <= 0 && speedX < 0);
+}
+
+
+void Ball :: Stop(){
+
+    speedX = 0;
+    speedY = 0;
+}
+
+void Ball :: Start(){
+
+    speedX = 8;
+    speedY = 8;
 }

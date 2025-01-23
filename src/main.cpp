@@ -22,6 +22,9 @@ int main(){
         
         game.Draw();
 
+        if(game.IsEnd)
+            game.ResetGame();
+
         EndDrawing();
     }
 

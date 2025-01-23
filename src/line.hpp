@@ -4,6 +4,7 @@
 class Line{
 
     public:
+        Line();
         Line(bool);
 
         void Draw();
@@ -15,6 +16,9 @@ class Line{
 
         void MoveUp();
         void MoveDown();
+
+        void Stop();
+        void Start();
 
     private:
 
