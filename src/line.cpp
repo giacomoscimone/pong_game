@@ -17,12 +17,12 @@ Line :: Line(bool numberPlayer){
 
 }
 
-void Line :: RecUpdate(){
+void Line :: RectUpdate(){
 
-    rec.x = x;
-    rec.y = y;
-    rec.width = WIDTH;
-    rec.height = HEIGHT;
+    rect.x = x;
+    rect.y = y;
+    rect.width = WIDTH;
+    rect.height = HEIGHT;
 }
 
 void Line :: Draw(){

@@ -36,13 +36,15 @@ void Game :: Draw(){
 void Game :: Update(){
 
 
-    pl1.RecUpdate();
-    pl2.RecUpdate();
+    pl1.RectUpdate();
+    pl2.RectUpdate();
 
 
-    if(CheckCollisionCircleRec({(float)ball.x , (float)ball.y}, (float)ball.radius, pl1.rec) || CheckCollisionCircleRec({(float)ball.x , (float)ball.y}, (float)ball.radius, pl2.rec) )
-        ball.reboundLines();
-
+    if(CheckCollisionCircleRec({(float)ball.x , (float)ball.y}, (float)ball.radius, pl1.rect) )
+        ball.reboundLines(0);
+    else if(CheckCollisionCircleRec({(float)ball.x , (float)ball.y}, (float)ball.radius, pl2.rect))
+        ball.reboundLines(1);
+        
     if(timeAttend <= 0)
         ball.ballUpdate();
     else {

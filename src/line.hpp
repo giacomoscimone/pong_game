@@ -8,11 +8,11 @@ class Line{
         Line(bool);
 
         void Draw();
-        void RecUpdate();
+        void RectUpdate();
 
         bool isFirstPl;
 
-        Rectangle rec;
+        Rectangle rect;
 
         void MoveUp();
         void MoveDown();

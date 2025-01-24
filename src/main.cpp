@@ -12,18 +12,32 @@ int main(){
 
     Game game;
 
+    bool StatusStop = false;
+
     while( !WindowShouldClose()){
 
-        game.HandleInput();
-        
-        game.Update();
+        if(IsKeyPressed(KEY_P))
+                StatusStop = !StatusStop;
+
         ClearBackground( colorBackground );
         BeginDrawing();
-        
-        game.Draw();
 
-        if(game.IsEnd)
-            game.ResetGame();
+        if( !StatusStop ){
+            game.HandleInput();
+
+            game.Update();
+            if(game.IsEnd)
+                game.ResetGame();
+        }
+        else{
+            DrawRectangle(55, 15, 100, 70, WHITE);
+        
+            DrawRectangle(78, 30, 18, 40, BLACK);
+            DrawRectangle(114, 30, 18, 40, BLACK);
+        }
+        
+
+        game.Draw();
 
         EndDrawing();
     }

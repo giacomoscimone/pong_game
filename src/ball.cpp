@@ -37,13 +37,17 @@ void Ball :: ballUpdate(){
     y += speedY;
 }
 
-void Ball :: reboundLines(){
+void Ball :: reboundLines(bool pl){
 
-    speedX = -speedX;
+    speedX = 10;
+
     if(rand()%2)
         speedY = -speedY;
 
     y += rand()%8 -4;
+
+    if(pl)
+        speedX = -speedX;
 }
 
 bool Ball :: CollisionScreenY(){
@@ -70,6 +74,11 @@ void Ball :: Stop(){
 
 void Ball :: Start(){
 
-    speedX = 8;
-    speedY = 8;
+    speedX = 7;
+    speedY = 7;
+
+    if(rand()%2)
+        speedX = -speedX;
+    if(rand()%2)
+        speedY = -speedY;
 }

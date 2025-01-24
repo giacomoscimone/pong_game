@@ -10,7 +10,7 @@ class Ball{
         void Draw();
         void ballUpdate();
 
-        void reboundLines();
+        void reboundLines(bool);
 
         
         bool PointScoredPL1();
