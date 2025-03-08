@@ -1,6 +1,6 @@
-#include "raylib.h"
 #include "game.hpp"
 
+void DrawPause();
 
 int main(){
 
@@ -19,9 +19,8 @@ int main(){
         if(IsKeyPressed(KEY_P))
                 StatusStop = !StatusStop;
 
-        ClearBackground( colorBackground );
         BeginDrawing();
-
+        ClearBackground( colorBackground );
         if( !StatusStop ){
             game.HandleInput();
 
@@ -30,10 +29,7 @@ int main(){
                 game.ResetGame();
         }
         else{
-            DrawRectangle(55, 15, 100, 70, WHITE);
-        
-            DrawRectangle(78, 30, 18, 40, BLACK);
-            DrawRectangle(114, 30, 18, 40, BLACK);
+            DrawPause();
         }
         
 
@@ -43,4 +39,12 @@ int main(){
     }
 
     CloseWindow();
+}
+
+void DrawPause(){
+
+    DrawRectangle(55, 15, 100, 70, WHITE);
+    DrawRectangle(78, 30, 18, 40, BLACK);
+    DrawRectangle(114, 30, 18, 40, BLACK);
+
 }

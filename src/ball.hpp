@@ -1,5 +1,9 @@
 #pragma once
+#include "raylib.h"
+#include <cmath>
+#include <iostream>
 
+const int VEL =  12;
 
 class Ball{
 
@@ -10,7 +14,7 @@ class Ball{
         void Draw();
         void ballUpdate();
 
-        void reboundLines(bool);
+        void reboundLines(bool, Rectangle);
 
         
         bool PointScoredPL1();
@@ -25,9 +29,10 @@ class Ball{
 
     private:
         
-        
+        double angle;
+
         double speedX;
-        double speedY;    
+        double speedY;
         
         bool CollisionScreenY();
 };

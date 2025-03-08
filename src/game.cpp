@@ -41,9 +41,9 @@ void Game :: Update(){
 
 
     if(CheckCollisionCircleRec({(float)ball.x , (float)ball.y}, (float)ball.radius, pl1.rect) )
-        ball.reboundLines(0);
+        ball.reboundLines(0, pl1.rect);
     else if(CheckCollisionCircleRec({(float)ball.x , (float)ball.y}, (float)ball.radius, pl2.rect))
-        ball.reboundLines(1);
+        ball.reboundLines(1, pl2.rect);
         
     if(timeAttend <= 0)
         ball.ballUpdate();
