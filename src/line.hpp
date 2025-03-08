@@ -4,7 +4,7 @@
 class Line{
 
     public:
-        Line();
+        // Line();
         Line(bool);
 
         void Draw();

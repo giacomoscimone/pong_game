@@ -5,6 +5,8 @@ const float MAX_ANGLE = PI / 4;
 
 Ball :: Ball(){
 
+    srand(time(NULL));
+
     x = GetScreenWidth() / 2;
     y = GetScreenHeight() / 2;
 
@@ -27,8 +29,7 @@ Ball :: Ball( int X, int Y){
 
 void Ball :: Draw(){
 
-    DrawCircle(x, y, radius, WHITE);
-    DrawText(std::to_string(angle).c_str(), 20, 40, 10, WHITE);
+    DrawCircle(x, y, (float)radius, WHITE);
 }
 
 void Ball :: ballUpdate(){
@@ -41,8 +42,8 @@ void Ball :: ballUpdate(){
             speedX = VEL * cos(angle);
         speedY = VEL * sin(angle);
     }
-    x += speedX;
-    y += speedY;
+    x += (int)speedX;
+    y += (int)speedY;
 }
 
 void Ball :: reboundLines(bool pl, Rectangle paddle){
@@ -82,12 +83,16 @@ bool Ball :: PointScoredPL2(){
 
 void Ball :: Stop(){
 
-    return;
+    speedX = 0;
+    speedY = 0;
 }
 
 void Ball :: Start(){
 
-    angle = PI;
+    if (rand() % 2)
+        angle = PI;
+    else
+        angle = 2*PI;
 
     speedX = VEL * cos(angle);
     speedY = VEL * sin(angle);

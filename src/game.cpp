@@ -1,8 +1,6 @@
 #include "game.hpp"
-#include "raylib.h"
 #include "ball.hpp"
 #include "line.hpp"
-#include <iostream>
 
 Game :: Game(){
 

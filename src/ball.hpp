@@ -1,7 +1,8 @@
 #pragma once
 #include "raylib.h"
 #include <cmath>
-#include <iostream>
+#include <ctime>
+#include <string>
 
 const int VEL =  12;
 
