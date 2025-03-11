@@ -7,9 +7,6 @@ Ball :: Ball(){
 
     srand(time(NULL));
 
-    x = GetScreenWidth() / 2;
-    y = GetScreenHeight() / 2;
-
     Start();
 
     angle = 0;
@@ -30,6 +27,8 @@ Ball :: Ball( int X, int Y){
 void Ball :: Draw(){
 
     DrawCircle(x, y, (float)radius, WHITE);
+
+    DrawText(std::to_string(angle*180/PI).c_str(), 200, 200, FONT_DEFAULT, WHITE);
 }
 
 void Ball :: ballUpdate(){
@@ -89,10 +88,14 @@ void Ball :: Stop(){
 
 void Ball :: Start(){
 
-    if (rand() % 2)
-        angle = PI;
-    else
-        angle = 2*PI;
+    double possAngles[] = {0, 45, 150, 180, 200, 315};
+
+    x = GetScreenWidth() / 2;
+    y = GetScreenHeight() / 2;
+
+    int size = sizeof(possAngles) / sizeof(possAngles[0]);
+
+    angle = possAngles[rand() % size] * (PI / 180.0);
 
     speedX = VEL * cos(angle);
     speedY = VEL * sin(angle);

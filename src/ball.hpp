@@ -3,8 +3,11 @@
 #include <cmath>
 #include <ctime>
 #include <string>
+#include "iostream"
 
-const int VEL =  12;
+const int VEL =  14;
+
+#define M_PI 3.14159;
 
 class Ball{
 

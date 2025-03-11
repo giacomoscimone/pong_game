@@ -51,12 +51,12 @@ void Game :: Update(){
     }
     if(ball.PointScoredPL1()){
         AddScorePl1();
-        ball = Ball();
+        ball.Start();
         timeAttend = 15;
     }
     else if(ball.PointScoredPL2()){
         AddScorePl2();
-        ball = Ball();
+        ball.Start();
         timeAttend = 15;
     }
         
