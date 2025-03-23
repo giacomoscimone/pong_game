@@ -35,12 +35,15 @@ void Ball :: ballUpdate(){
 
     if(CollisionScreenY()){
         angle = -angle;
+        CorrectAngle();
+
         if(speedX < 0)
             speedX = -VEL * cos(angle);
         else 
             speedX = VEL * cos(angle);
         speedY = VEL * sin(angle);
     }
+
     x += (int)speedX;
     y += (int)speedY;
 }
@@ -56,12 +59,33 @@ void Ball :: reboundLines(bool pl, Rectangle paddle){
 
     angle += ((float)rand() / RAND_MAX) * 0.5 - 0.25;
 
+    CorrectAngle();
+
     speedX = VEL * std::abs(cos(angle));
     if(pl)
         speedX = -speedX;
 
     speedY = VEL * sin(angle);
     
+}
+
+void Ball::CorrectAngle(){
+    float angleGrad = angle*180 / PI;
+    float radAngle = PI/180;
+
+    if( angleGrad >= 50 && angleGrad <= 90 )
+        angle = radAngle * 50;
+    else if( angleGrad <= 130 && angleGrad >= 90 )
+        angle = radAngle * 140;
+    else if( angleGrad >= 270 && angleGrad <= 310 )
+        angle = radAngle * 310;
+    else if( angleGrad >= 230 && angleGrad <= 270 )
+        angle = radAngle * 230;
+}
+
+void Ball::Accellerate(){
+
+    VEL += 0.2;
 }
 
 bool Ball :: CollisionScreenY(){
@@ -87,6 +111,8 @@ void Ball :: Stop(){
 }
 
 void Ball :: Start(){
+
+    VEL = 13;
 
     double possAngles[] = {0, 45, 150, 180, 200, 315};
 

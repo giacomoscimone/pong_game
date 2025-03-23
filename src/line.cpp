@@ -1,5 +1,4 @@
 #include "line.hpp"
-#include "raylib.h"
 
 
 Line :: Line(bool numberPlayer){
@@ -52,4 +51,15 @@ void Line :: Stop(){
 void Line :: Start(){
 
     speedY = 7.5;
+    HEIGHT = 130;
+}
+
+void Line :: Reduce(){
+
+    if(HEIGHT >= 40){
+        HEIGHT -= 1;
+        y++;
+    }
+    speedY += 0.15;
+
 }

@@ -5,8 +5,6 @@
 #include <string>
 #include "iostream"
 
-const int VEL =  14;
-
 #define M_PI 3.14159;
 
 class Ball{
@@ -19,7 +17,9 @@ class Ball{
         void ballUpdate();
 
         void reboundLines(bool, Rectangle);
-
+        void UpdateSpeed();
+        void CorrectAngle();
+        void Accellerate();
         
         bool PointScoredPL1();
         bool PointScoredPL2();
@@ -33,6 +33,8 @@ class Ball{
 
     private:
         
+        int VEL;
+
         double angle;
 
         double speedX;

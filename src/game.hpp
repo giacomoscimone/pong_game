@@ -6,7 +6,7 @@
 class Game{
 
     public:
-        Game();
+        Game(int);
         
         void Draw();
         void Update();
@@ -21,6 +21,8 @@ class Game{
         bool IsEnd;
         void Start();
 
+        
+
     private:
         Ball ball;
 
@@ -28,11 +30,13 @@ class Game{
         Line pl2 = Line(0);
 
         double timeAttend = 0;
+        int timeGame;
 
         void AddScorePl1();
         void AddScorePl2();
 
         const int MAX_SCORE = 10;
 
+        bool GameMode;
 
 };

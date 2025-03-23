@@ -7,6 +7,8 @@ class Line{
         // Line();
         Line(bool);
 
+        void Reduce();
+
         void Draw();
         void RectUpdate();
 
@@ -25,7 +27,8 @@ class Line{
         int x;
         int y;
 
-        const int WIDTH = 25, HEIGHT = 130;
+        const int WIDTH = 25;
+        int HEIGHT;
         
         int speedY;
 };

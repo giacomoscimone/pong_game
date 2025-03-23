@@ -2,7 +2,9 @@
 #include "ball.hpp"
 #include "line.hpp"
 
-Game :: Game(){
+Game :: Game(int mode){
+
+    GameMode = mode; 
 
     Start();
 
@@ -33,6 +35,16 @@ void Game :: Draw(){
 
 void Game :: Update(){
 
+    timeGame ++;
+
+    if(GameMode == 1 && ( timeGame % 30 == 0 )){
+
+        pl1.Reduce();
+        pl2.Reduce();
+
+        ball.Accellerate();
+    }
+
 
     pl1.RectUpdate();
     pl2.RectUpdate();
@@ -52,11 +64,15 @@ void Game :: Update(){
     if(ball.PointScoredPL1()){
         AddScorePl1();
         ball.Start();
+        pl1.Start();
+        pl2.Start();
         timeAttend = 15;
     }
     else if(ball.PointScoredPL2()){
         AddScorePl2();
         ball.Start();
+        pl1.Start();
+        pl2.Start();
         timeAttend = 15;
     }
         
@@ -133,4 +149,6 @@ void Game :: Start(){
 
     scorePl1= 0;
     scorePl2= 0;
+
+    timeGame = 0;
 }
