@@ -10,6 +10,9 @@ int main(){
 
     vector<int> mode = Menu();
 
+    if(mode[0] == -1 || mode[1] == -1)
+        return 0;
+
     InitWindow(1280, 720, "Ping Pong");
 
     SetExitKey(KEY_NULL);
