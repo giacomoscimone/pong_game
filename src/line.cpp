@@ -54,6 +54,16 @@ void Line :: Start(){
     HEIGHT = 130;
 }
 
+int Line :: AboveBall(int Y){
+
+    if(Y < y + tolleranceHeight)
+        return 1;
+    else if(Y > y + tolleranceHeight)
+        return 0;
+    else
+        return -1;
+}
+
 void Line :: Reduce(){
 
     if(HEIGHT >= 40){

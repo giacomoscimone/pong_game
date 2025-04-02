@@ -17,7 +17,6 @@ class Ball{
         void ballUpdate();
 
         void reboundLines(bool, Rectangle);
-        void UpdateSpeed();
         void CorrectAngle();
         void Accellerate();
         

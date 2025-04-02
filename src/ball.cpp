@@ -28,7 +28,6 @@ void Ball :: Draw(){
 
     DrawCircle(x, y, (float)radius, WHITE);
 
-    DrawText(std::to_string(angle*180/PI).c_str(), 200, 200, FONT_DEFAULT, WHITE);
 }
 
 void Ball :: ballUpdate(){

@@ -22,6 +22,8 @@ class Line{
         void Stop();
         void Start();
 
+        int AboveBall(int);
+
     private:
 
         int x;
@@ -31,4 +33,6 @@ class Line{
         int HEIGHT;
         
         int speedY;
+
+        const int tolleranceHeight = 30;
 };

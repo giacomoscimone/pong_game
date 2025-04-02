@@ -6,7 +6,7 @@
 class Game{
 
     public:
-        Game(int);
+        Game(int, int);
         
         void Draw();
         void Update();
@@ -32,11 +32,14 @@ class Game{
         double timeAttend = 0;
         int timeGame;
 
+        void CpuMove();
+
         void AddScorePl1();
         void AddScorePl2();
 
         const int MAX_SCORE = 10;
 
         bool GameMode;
+        bool CPU;
 
 };

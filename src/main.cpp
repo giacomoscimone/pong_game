@@ -1,11 +1,14 @@
 #include "game.hpp"
+#include "page.hpp"
+#include <vector>
+using namespace std;
 
 void DrawPause();
-bool Menu();
+vector<int> Menu();
 
 int main(){
 
-    bool mode = Menu();
+    vector<int> mode = Menu();
 
     InitWindow(1280, 720, "Ping Pong");
 
@@ -15,13 +18,13 @@ int main(){
 
     Color colorBackground = BLACK;
 
-    Game game(mode);
+    Game game(mode[0], mode[1]);
 
     bool StatusStop = false;
 
     while( !WindowShouldClose()){
 
-        if(IsKeyPressed(KEY_P))
+        if(IsKeyPressed(KEY_ESCAPE))
                 StatusStop = !StatusStop;
 
         BeginDrawing();
@@ -46,48 +49,48 @@ int main(){
     CloseWindow();
 }
 
-bool Menu(){
+vector<int> Menu(){
     
 
-    InitWindow(800, 600, "Esempio di due bottoni");
+    InitWindow(800, 600, "Menu'");
 
     SetExitKey(KEY_NULL);
     
 
     SetTargetFPS(60);
 
-    int result = -1;
+    // 0 -> default mode, 1 -> speedmode
+    int gameMode = -1;
+    // 0 -> real player, 1 -> CPU
+    int opponent = -1;
 
-    Rectangle button1 = {200, 250, 170, 50};
-    Rectangle button2 = {450, 250, 190, 50};
+    Page page1(0);
+    Page page2(1);
 
     while (!WindowShouldClose()) {
         
-        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
-            Vector2 mousePoint = GetMousePosition();
-
-            if (CheckCollisionPointRec(mousePoint, button1)) {
-                result = 0;
-                break; 
-            }
-            if (CheckCollisionPointRec(mousePoint, button2)) {
-                result = 1;
-                break;
-            }
-        }
         BeginDrawing();
         ClearBackground(RAYWHITE);
 
-        DrawText("Scegli la modalita'", 280, 180, 20, DARKGRAY);
-
-        DrawRectangleRec(button1, LIGHTGRAY);
-        DrawRectangleRec(button2, LIGHTGRAY);
-        DrawText("Classic mode", button1.x + 20, button1.y + 10, 20, BLACK);
-        DrawText("Competitive mode", button2.x + 20, button2.y + 10, 20, BLACK);
-
+        if( gameMode == -1){
+            gameMode = page1.Update();
+            page1.Draw();
+        }
+        else if ( opponent == -1){
+            opponent = page2.Update();
+            page2.Draw();
+        }
+        else
+            break;
+        
         EndDrawing();
     }
     CloseWindow();
+
+    std::vector <int> result;
+
+    result.push_back(gameMode);
+    result.push_back(opponent);
 
     return result;
 

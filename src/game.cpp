@@ -2,9 +2,11 @@
 #include "ball.hpp"
 #include "line.hpp"
 
-Game :: Game(int mode){
+Game :: Game(int mode, int opponent){
 
     GameMode = mode; 
+    CPU = opponent;
+
 
     Start();
 
@@ -86,10 +88,16 @@ void Game :: HandleInput(){
         pl1.MoveUp();
     else if(IsKeyDown(KEY_S))
         pl1.MoveDown();
-    if(IsKeyDown(KEY_UP))
-        pl2.MoveUp();
-    else if(IsKeyDown(KEY_DOWN))
-        pl2.MoveDown();
+
+    if(!CPU){
+        if(IsKeyDown(KEY_UP))
+            pl2.MoveUp();
+        else if(IsKeyDown(KEY_DOWN))
+            pl2.MoveDown();
+    }
+    else{
+        CpuMove();
+    }
     
 }
 
@@ -103,8 +111,10 @@ void Game :: ResetGame(){
     
     if(scorePl1 > scorePl2)
         textWinner = "Player 1";
-    else 
+    else if( !CPU )
         textWinner = "Player 2";
+    else
+       textWinner = "CPU";
 
     char const* winner = textWinner.c_str();
 
@@ -120,8 +130,20 @@ void Game :: ResetGame(){
          
 }
 
-void Game :: AddScorePl1(){
-    
+void Game::CpuMove(){
+
+    if(pl2.AboveBall(ball.y) == 1){
+        pl2.MoveUp();
+    }
+    else if( pl2.AboveBall(ball.y) == 0)
+        pl2.MoveDown();
+    else 
+        return;
+}
+
+void Game ::AddScorePl1()
+{
+
     scorePl1++;
 
     if(scorePl1 >= MAX_SCORE)
