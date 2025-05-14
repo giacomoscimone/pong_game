@@ -13,6 +13,7 @@ class Line{
         void RectUpdate();
 
         bool isFirstPl;
+        int getHeight();
 
         Rectangle rect;
 
@@ -23,7 +24,6 @@ class Line{
         void Start();
 
         int AboveBall(int);
-
     private:
 
         int x;

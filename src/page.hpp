@@ -19,4 +19,5 @@ class Page{
         
         void FirstPage();
         void SecondPage();
+        void ThirdPage();
 };

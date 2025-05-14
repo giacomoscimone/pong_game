@@ -11,6 +11,9 @@ Page::Page(int n){
     case 1:
         SecondPage();
         break;
+    case 2:
+        ThirdPage();
+        break;
 
     default:
         break;
@@ -57,4 +60,11 @@ void Page :: SecondPage(){
     question = "How you want to play?";
     firstChoice = "Vs Player";
     secondChoise = "Vs Computer";
+}
+
+void Page::ThirdPage(){
+
+    question = "Select Difficulty";
+    firstChoice = "Easy";
+    secondChoise = "Hard";
 }

@@ -1,6 +1,7 @@
 #include "game.hpp"
 #include "ball.hpp"
 #include "line.hpp"
+#include <iostream>
 
 Game :: Game(int mode, int opponent){
 
@@ -84,15 +85,19 @@ void Game :: Update(){
 void Game :: HandleInput(){
 
 
-    if(IsKeyDown(KEY_W))
+    if (GetGamepadAxisMovement(0, GAMEPAD_AXIS_LEFT_Y) < -0.1
+        || IsKeyDown(KEY_W))
         pl1.MoveUp();
-    else if(IsKeyDown(KEY_S))
+    else if (GetGamepadAxisMovement(0, GAMEPAD_AXIS_LEFT_Y) > 0.1 
+        || IsKeyDown(KEY_S))
         pl1.MoveDown();
 
-    if(!CPU){
-        if(IsKeyDown(KEY_UP))
+    if(CPU == 0){
+        if(GetGamepadAxisMovement(0, GAMEPAD_AXIS_RIGHT_Y) < -0.1
+            || IsKeyDown(KEY_UP))
             pl2.MoveUp();
-        else if(IsKeyDown(KEY_DOWN))
+        else if(GetGamepadAxisMovement(0, GAMEPAD_AXIS_RIGHT_Y) > 0.1
+            || IsKeyDown(KEY_DOWN))
             pl2.MoveDown();
     }
     else{
@@ -132,6 +137,7 @@ void Game :: ResetGame(){
 
 void Game::CpuMove(){
 
+    
     if(pl2.AboveBall(ball.y) == 1){
         pl2.MoveUp();
     }

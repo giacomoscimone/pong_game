@@ -3,14 +3,20 @@
 #include <vector>
 using namespace std;
 
+struct Config {
+
+    int gameMode;
+    int opponent;
+    int difficulty;
+};
 void DrawPause();
-vector<int> Menu();
+Config Menu();
 
 int main(){
 
-    vector<int> mode = Menu();
+    Config mode = Menu();
 
-    if(mode[0] == -1 || mode[1] == -1)
+    if(mode.gameMode == -1 || mode.opponent == -1)
         return 0;
 
     InitWindow(1280, 720, "Ping Pong");
@@ -21,7 +27,12 @@ int main(){
 
     Color colorBackground = BLACK;
 
-    Game game(mode[0], mode[1]);
+    if (mode.opponent == 1 && (mode.difficulty == 1))
+            mode.opponent = 2;
+    // CPU Easy mode by default
+
+
+    Game game(mode.gameMode, mode.opponent);
 
     bool StatusStop = false;
 
@@ -43,8 +54,8 @@ int main(){
             DrawPause();
         }
         
-
         game.Draw();
+        DrawFPS(30, 10);
 
         EndDrawing();
     }
@@ -52,7 +63,7 @@ int main(){
     CloseWindow();
 }
 
-vector<int> Menu(){
+Config Menu(){
     
 
     InitWindow(800, 600, "Menu'");
@@ -66,9 +77,12 @@ vector<int> Menu(){
     int gameMode = -1;
     // 0 -> real player, 1 -> CPU
     int opponent = -1;
+    // 0 -> Easy, 1 -> Hard
+    int difficulty = -1;
 
     Page page1(0);
     Page page2(1);
+    Page page3(2);
 
     while (!WindowShouldClose()) {
         
@@ -83,6 +97,10 @@ vector<int> Menu(){
             opponent = page2.Update();
             page2.Draw();
         }
+        else if (opponent == 1 && difficulty == -1) {
+            difficulty = page3.Update();
+            page3.Draw();
+        }
         else
             break;
         
@@ -90,13 +108,10 @@ vector<int> Menu(){
     }
     CloseWindow();
 
-    std::vector <int> result;
+    
+    return {gameMode, opponent, difficulty};
 
-    result.push_back(gameMode);
-    result.push_back(opponent);
-
-    return result;
-
+  // #TODO the hard gamemode
 }
 
 void DrawPause(){
@@ -106,3 +121,4 @@ void DrawPause(){
     DrawRectangle(114, 30, 18, 40, BLACK);
 
 }
+

@@ -39,5 +39,6 @@ class Ball{
         double speedX;
         double speedY;
         
+
         bool CollisionScreenY();
 };

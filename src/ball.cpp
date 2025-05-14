@@ -84,7 +84,7 @@ void Ball::CorrectAngle(){
 
 void Ball::Accellerate(){
 
-    VEL += 0.2;
+    VEL += 0.25;
 }
 
 bool Ball :: CollisionScreenY(){
@@ -102,7 +102,6 @@ bool Ball :: PointScoredPL2(){
     return (x - radius <= 0);
 }
 
-
 void Ball :: Stop(){
 
     speedX = 0;
@@ -111,7 +110,7 @@ void Ball :: Stop(){
 
 void Ball :: Start(){
 
-    VEL = 13;
+    VEL = 13.5;
 
     double possAngles[] = {0, 45, 150, 180, 200, 315};
 

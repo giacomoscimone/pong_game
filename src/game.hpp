@@ -40,6 +40,6 @@ class Game{
         const int MAX_SCORE = 10;
 
         bool GameMode;
-        bool CPU;
+        int CPU;
 
 };

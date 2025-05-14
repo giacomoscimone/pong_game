@@ -24,6 +24,11 @@ void Line :: RectUpdate(){
     rect.height = HEIGHT;
 }
 
+int Line::getHeight()
+{
+    return HEIGHT;
+}
+
 void Line :: Draw(){
 
     DrawRectangle(x, y, WIDTH, HEIGHT, WHITE);
@@ -54,7 +59,7 @@ void Line :: Start(){
     HEIGHT = 130;
 }
 
-int Line :: AboveBall(int Y){
+int Line :: AboveBall(int Y){ //over the ball
 
     if(Y < y + tolleranceHeight)
         return 1;
@@ -66,10 +71,11 @@ int Line :: AboveBall(int Y){
 
 void Line :: Reduce(){
 
-    if(HEIGHT >= 40){
+    if(HEIGHT >= 35){
         HEIGHT -= 1;
         y++;
+        speedY += 0.20;
     }
-    speedY += 0.15;
+    
 
 }
